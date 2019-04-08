@@ -70,7 +70,7 @@ class SingleLinkedList(object):
     def insert(self, pos, item):
         """插入"""
 
-        if (pos-1) <= 0:
+        if (pos-1) < 0:
             # 如果位置为0，即头部插入
             self.add(item)
         elif (pos-1) >= self.lenth():
