@@ -161,5 +161,6 @@ if __name__ == "__main__":
 
     dl.insert(2, 5)
     dl.traver()
-    dl.remove(4)
+    print(dl.remove(2))
+    print("-----")
     dl.traver()
