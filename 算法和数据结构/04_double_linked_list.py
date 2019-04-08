@@ -114,16 +114,35 @@ class DoubleLinkedList(object):
 
     def remove(self, item):
         """根据item删除链表"""
-        pre = None
-        cur = self.__head
-        while cur != None:
-            if cur.elem == item:
-                pre.next = cur.next
-                cur.next = None
-                return cur.elem
-            pre = cur
-            cur = cur.next
-        return ""
+        # 先判断链表是否为空
+        if self.is_empty():
+            return ""
+        else:
+            cur = self.__head
+            # 移动节点到需要删除的位置上
+            while cur is not None:
+                # 如果和需要删除的元素相等，则需要把它删除
+                if cur.elem == item:
+                    # 首先如果是第一个节点，则把self.__head 指向cur.next即可，perv= None
+                    if cur == self.__head:
+                        self.__head = cur.next
+                        # 然后判断整个链表是否只有一个节点,只有不为none，才去运行里面的语句
+                        if cur.next:
+                            cur.next.perv = None
+                            cur.next = None
+                        return cur.elem
+                    else:
+                        cur.prev.next = cur.next
+                        # 如果是尾部，cur.next则为none.所以，需要这这里做一个判断。
+                        if cur.next:
+                            cur.next.perv = cur.prev
+                        return cur.elem
+                # 否则把游标移动到下一个位置。
+                cur = cur.next
+
+            return ""
+
+
 
 
 
@@ -140,6 +159,7 @@ if __name__ == "__main__":
     dl.append(3)
     dl.append(4)
 
+    dl.insert(2, 5)
     dl.traver()
-    dl.insert(2,5)
+    dl.remove(4)
     dl.traver()
