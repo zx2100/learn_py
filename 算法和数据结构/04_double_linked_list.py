@@ -78,7 +78,7 @@ class DoubleLinkedList(object):
     def insert(self, pos, item):
         """插入"""
         # 判断是否首部插入
-        if pos <= 0:
+        if pos < 0:
             self.add(item)
             return
         # 判断是否尾部插入
