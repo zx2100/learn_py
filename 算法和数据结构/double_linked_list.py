@@ -45,6 +45,9 @@ class DoubleLinkedList(object):
 
         node.next = self.__head
         node.prev = None
+        # 如果node.next不为空，则需要为下一个节点的perv指向自己
+        if node.next is not None:
+            node.next.prev = node
         self.__head = node
 
 
@@ -143,12 +146,22 @@ class DoubleLinkedList(object):
             return ""
 
 
+    def pop(self, pos):
 
+        cur = self.__head
+        # 判断是否为空
+        if cur is None:
+            return ""
+        # 否则删除头部元素，并返回
+        else:
+            if pos == -1:
+                pos = (self.lenth()-1)
+            count = 0
+            while count < pos:
+                cur = cur.next
+                count += 1
 
-
-
-
-
+            return self.remove(cur.elem)
 
 if __name__ == "__main__":
 
@@ -158,6 +171,7 @@ if __name__ == "__main__":
     dl.append(2)
     dl.append(3)
     dl.append(4)
+    dl.add(11)
 
     dl.insert(2, 5)
     dl.traver()
