@@ -21,6 +21,10 @@ def shell_sorting(lis):
 
 
 if __name__ == "__main__":
-    lis
+    lis = []
+    for i in range(1000):
+        lis.append(random.randint(0, 467))
+
+
     print(lis)
     print(shell_sorting(lis))
