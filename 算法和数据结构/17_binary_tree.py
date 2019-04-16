@@ -45,18 +45,17 @@ class BinaryTree(object):
                 queue.append(cur.r_child)
 
 
-
     def traversal(self):
+        """遍历整棵树"""
         if self.root is None:
             return ""
 
         queue = [self.root]
 
-
         while queue:
             cur = queue.pop(0)
             # 打印当前节点
-            print(cur.elem)
+            print(cur.elem,end="")
             # 遍历左子树
             if cur.l_child:
                 queue.append(cur.l_child)
@@ -65,15 +64,50 @@ class BinaryTree(object):
                 queue.append(cur.r_child)
 
 
+    def pre_traversal(self, node):
+        if node is None:
+            return ""
+
+        print(node.elem, end="")
+        self.pre_traversal(node.l_child)
+        self.pre_traversal(node.r_child)
+
+    def in_traversal(self, node):
+        if node is None:
+            return ""
+        self.in_traversal(node.l_child)
+        print(node.elem, end="")
+        self.in_traversal(node.r_child)
+
+
+    def post_traversal(self, node):
+        if node is None:
+            return ""
+        self.post_traversal(node.l_child)
+        # print(node.elem, end="")
+        self.post_traversal(node.r_child)
+        print(node.elem, end="")
+
+
 
 
 if __name__ == "__main__":
 
     tree = BinaryTree()
+    tree.add(0)
     tree.add(1)
     tree.add(2)
-    tree.add(4)
     tree.add(3)
-    tree.add(22)
-    tree.add(11)
+    tree.add(4)
+    tree.add(5)
+    tree.add(6)
+    tree.add(7)
+    tree.add(8)
+    tree.add(9)
     tree.traversal()
+    print("")
+    tree.pre_traversal(tree.root)
+    print("")
+    tree.in_traversal(tree.root)
+    print("")
+    tree.post_traversal(tree.root)
