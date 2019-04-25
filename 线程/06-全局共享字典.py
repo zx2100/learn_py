@@ -9,6 +9,8 @@ def get_something():
 
     task1()
     task2()
+    task1()
+    task2()
 
 def task1():
     some = g_dit[threading.current_thread()]

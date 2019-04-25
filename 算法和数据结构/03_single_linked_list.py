@@ -115,7 +115,7 @@ if __name__ == "__main__":
     start_time = time.time()
 
 
-    for i in range(10000):
+    for i in range(1000):
         ss.append(i)
 
 
@@ -126,6 +126,10 @@ if __name__ == "__main__":
 
 
 
-    print(ss.search(9990))
+    #print(ss.search(9990))
+    print(id(ss))
     #ss.traver()
+    while True:
+        time.sleep(1)
+
 
